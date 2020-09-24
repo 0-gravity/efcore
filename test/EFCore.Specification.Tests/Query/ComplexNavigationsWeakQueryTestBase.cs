@@ -145,11 +145,11 @@ namespace Microsoft.EntityFrameworkCore.Query
             return base.Include_collection_with_multiple_orderbys_property(async);
         }
 
-        [ConditionalTheory(Skip = "Issue#17803")]
-        public override Task Member_pushdown_with_multiple_collections(bool async)
-        {
-            return base.Member_pushdown_with_multiple_collections(async);
-        }
+        //[ConditionalTheory(Skip = "Issue#17803")]
+        //public override Task Member_pushdown_with_multiple_collections(bool async)
+        //{
+        //    return base.Member_pushdown_with_multiple_collections(async);
+        //}
 
         // Cannot create DbSet for Level2
         public override void Join_with_navigations_in_the_result_selector2()
@@ -180,6 +180,12 @@ namespace Microsoft.EntityFrameworkCore.Query
         public override void Filtered_include_outer_parameter_used_inside_filter()
         {
             // TODO: this test can be ran with weak entities once #18191 is fixed and we can use query test infra properly
+        }
+
+        [ConditionalTheory(Skip = "Issue#17803")]
+        public override Task Multiple_collection_FirstOrDefault_followed_by_member_access_in_projection(bool async)
+        {
+            return base.Multiple_collection_FirstOrDefault_followed_by_member_access_in_projection(async);
         }
     }
 }
